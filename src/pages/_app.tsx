@@ -2,7 +2,7 @@ import '~/styles/global.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { PT_Serif, Poppins, Lora } from '@next/font/google'
+import { PT_Serif, Poppins, Lora } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import { lazy } from 'react'
 config.autoAddCss = false
