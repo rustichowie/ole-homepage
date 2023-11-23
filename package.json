@@ -14,15 +14,19 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@next/font": "^13.4.7",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@portabletext/react": "3.0.4",
     "@sanity/client": "6.4.0",
     "@sanity/demo": "^1.0.2",
+    "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.1.4",
     "@tailwindcss/typography": "^0.5.8",
     "next": "13.4.12",
     "next-sanity": "^5.1.0",
     "react": "^18.2.0",
+    "react-cool-dimensions": "^3.0.1",
     "react-dom": "^18.2.0",
     "sanity": "3.14.5",
     "styled-components": "5.3.11"
@@ -30,6 +34,7 @@
   "devDependencies": {
     "@types/react": "18.2.18",
     "autoprefixer": "^10.4.14",
+    "daisyui": "^3.9.2",
     "eslint": "^8.46.0",
     "eslint-config-next": "13.4.12",
     "eslint-plugin-simple-import-sort": "^10.0.0",

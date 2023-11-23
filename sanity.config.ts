@@ -16,6 +16,20 @@ import {
 import { schema } from '~/schemas'
 import { productionUrl } from '~/utils/productionUrl'
 
+
+export const myStructure = (S) =>
+  S.list()
+    .title('Base')
+    .items([
+      S.listItem()
+        .title('Forside')
+        .child(
+          S.document()
+            .schemaType('landingPage')
+            .documentId('landingPage')),
+            ...S.documentTypeListItems().filter(listItem => !['landingPage'].includes(listItem.getId()))
+    ])
+
 export default defineConfig({
   basePath: '/studio',
   name: 'project-name',
