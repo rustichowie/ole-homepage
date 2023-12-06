@@ -34,15 +34,13 @@ export default function Hero(props: HeroProps) {
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold uppercase">Hello there</h1>
+        <div className="max-w-lg">
+          <h1 className="mb-5 text-5xl font-bold uppercase">Trenger du hjelp?</h1>
 
           <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Ta kontakt med oss så finner vi en god løsning på ditt prosjekt.
           </p>
-          <button className="btn btn-accent">Get Started</button>
+          <a href="tel:91794681" className="btn btn-accent">Ta Kontakt</a>
         </div>
       </div>
     </div>
