@@ -45,7 +45,7 @@ export default function IndexPage(
   console.log(frontPage)
 
   const { highlightedJobs, highlightedServices, images, title, subTitle } =
-    frontPage
+    frontPage ?? {}
   return (
     <>
       <section>
