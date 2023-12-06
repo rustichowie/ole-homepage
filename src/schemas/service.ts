@@ -11,16 +11,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      validation: (Rule) => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    }),
-    defineField({
       name: 'excerpt',
       title: 'Kort beskrivelse',
       type: 'text',
@@ -28,10 +18,23 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Bilde eller ikon',
-      type: 'image',
+      title: 'Velg ikon (jobber med forhåndsvisning av ikon)',
+      type: 'string',
       options: {
-        hotspot: true,
+        list: [
+          {
+            title: 'Hammer',
+            value: 'hammer',
+          },
+          {
+            title: 'Hjelm',
+            value: 'helmet',
+          },
+          {
+            title: 'Hus',
+            value: 'house',
+          },
+        ],
       },
     }),
   ],

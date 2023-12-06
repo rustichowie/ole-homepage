@@ -10,9 +10,12 @@ import { Image as SanityImage } from 'sanity'
 
 import Card from '~/components/Card'
 import Container from '~/components/Container'
+import Hero from '~/components/Hero'
+import HighlightedSection from '~/components/HighlightedSection'
 import Welcome from '~/components/Welcome'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
+import { urlForImage } from '~/lib/sanity.image'
 import {
   getFrontPage,
   getPosts,
@@ -21,9 +24,6 @@ import {
   postsQuery,
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
-import { urlForImage } from '~/lib/sanity.image'
-import Hero from '~/components/Hero'
-import HighlightedSection from '~/components/HighlightedSection'
 
 export const getServerSideProps: GetServerSideProps<
   SharedPageProps & {
@@ -32,7 +32,6 @@ export const getServerSideProps: GetServerSideProps<
 > = async ({ draftMode = false }) => {
   const client = getClient(draftMode ? { token: readToken } : undefined)
   const frontPage = await getFrontPage(client)
-  console.log(frontPage, 'debug')
 
   return {
     props: {
@@ -47,10 +46,16 @@ export default function IndexPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
   const [frontPage] = useLiveQuery<LandingPage>(props.frontPage, postsQuery)
-  console.log(frontPage)
 
-  const { highlightedJobs, highlightedServices, images, title, subTitle } =
-    frontPage ?? {}
+  const {
+    highlightedJobs,
+    highlightedServices,
+    images,
+    title,
+    subTitle,
+    ctaLink,
+    ctaLabel,
+  } = frontPage ?? {}
   return (
     <>
       <section>
@@ -63,7 +68,15 @@ export default function IndexPage(
         </div>
       </section>
       <section className="w-full">
-        {images && <Hero image={images[0]} />}
+        {images && (
+          <Hero
+            image={images[0]}
+            link={ctaLink}
+            linkText={ctaLabel}
+            subTitle={subTitle}
+            title={title}
+          />
+        )}
       </section>
       <article className="">
         {highlightedServices && (
@@ -82,6 +95,7 @@ export default function IndexPage(
                     description={service.excerpt}
                     title={service.title}
                     key={'job-' + index}
+                    icon={service.mainImage}
                   />
                 )
               })}

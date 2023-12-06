@@ -14,7 +14,7 @@ export async function getPosts(client: SanityClient): Promise<Post[]> {
   return await client.fetch(postsQuery)
 }
 
-export async function getFrontPage(client: SanityClient) : Promise<LandingPage>{
+export async function getFrontPage(client: SanityClient): Promise<LandingPage> {
   return await client.fetch(landingPage)
 }
 
@@ -22,7 +22,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
 
 export async function getPost(
   client: SanityClient,
-  slug: string
+  slug: string,
 ): Promise<Post> {
   return await client.fetch(postBySlugQuery, {
     slug,
@@ -34,15 +34,15 @@ export const postSlugsQuery = groq`
 `
 
 export interface LandingPage {
-  _type: 'landingPage',
-  _id: string,
-  _createtAt: string,
-  title?: string,
-  subTitle?: string,
-  images: Image[],
-  ctaLabel?: string,
-  ctaLink?: string,
-  highlightedJobs: Job[],
+  _type: 'landingPage'
+  _id: string
+  _createtAt: string
+  title?: string
+  subTitle?: string
+  images: Image[]
+  ctaLabel?: string
+  ctaLink?: string
+  highlightedJobs: Job[]
   highlightedServices: Service[]
 }
 
@@ -70,6 +70,6 @@ export interface Service {
   _id: string
   _createdAt: string
   title: string
-  mainImage?: Image
+  mainImage?: string
   excerpt?: string
 }

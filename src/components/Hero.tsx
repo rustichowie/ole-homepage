@@ -5,7 +5,11 @@ import { Image as SanityImage } from 'sanity'
 import { urlForImage } from '~/lib/sanity.image'
 
 export interface HeroProps {
-  image: SanityImage
+  image: SanityImage,
+  title?: string,
+  subTitle?: string,
+  link?: string,
+  linkText?: string
 }
 
 function arrayCeil(width) {
@@ -35,12 +39,12 @@ export default function Hero(props: HeroProps) {
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-lg">
-          <h1 className="mb-5 text-5xl font-bold uppercase">Trenger du hjelp?</h1>
+          <h1 className="mb-5 text-5xl font-bold uppercase">{props.title}</h1>
 
           <p className="mb-5">
-            Ta kontakt med oss så finner vi en god løsning på ditt prosjekt.
+            {props.subTitle}
           </p>
-          <a href="tel:91794681" className="btn btn-accent">Ta Kontakt</a>
+          <a href={`${props.link}`} className="btn btn-accent">{props.linkText}</a>
         </div>
       </div>
     </div>
