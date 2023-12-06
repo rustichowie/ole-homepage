@@ -33,7 +33,7 @@ export const myStructure = (S) =>
 export default defineConfig({
   basePath: '/studio',
   name: 'project-name',
-  title: 'Project Name',
+  title: 'Finvåg Service og vedlikehold',
   projectId,
   dataset,
   //edit schemas in './src/schemas'
