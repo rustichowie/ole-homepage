@@ -1,4 +1,9 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import type {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 import { Image as SanityImage } from 'sanity'
@@ -20,7 +25,7 @@ import { urlForImage } from '~/lib/sanity.image'
 import Hero from '~/components/Hero'
 import HighlightedSection from '~/components/HighlightedSection'
 
-export const getStaticProps: GetStaticProps<
+export const getServerSideProps: GetServerSideProps<
   SharedPageProps & {
     frontPage: LandingPage
   }
@@ -39,7 +44,7 @@ export const getStaticProps: GetStaticProps<
 }
 
 export default function IndexPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
 ) {
   const [frontPage] = useLiveQuery<LandingPage>(props.frontPage, postsQuery)
   console.log(frontPage)
