@@ -47,7 +47,7 @@ export default function Hero(props: HeroProps) {
         <div className="max-w-lg">
           <h1 className="mb-5 text-5xl font-bold uppercase">{props.title}</h1>
 
-          <p className="mb-5">{props.subTitle}</p>
+          <p className="text-lg mb-5">{props.subTitle}</p>
           <div className="w-full flex items-center justify-center">
             {props.phone && (
               <h3 className="flex items-center text-lg mr-8">
