@@ -21,12 +21,14 @@ export default function HighlightedSection({
 }: HighlightedSectionProps) {
   return (
     <div
-      className={`card lg:w-full rounded-none ${imagePlacement === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'} lg:max-h-[26rem] ${
+      className={`lg:flex card lg:w-full rounded-none ${
+        imagePlacement === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'
+      } lg:max-h-[26rem] ${
         color === 'primary' ? 'bg-accent text-neutral-content' : 'bg-base-200'
       } min-h-0`}
     >
-      <div className=''>
-        <img alt="alt" src={urlForImage(image).width(800).height(600).url()} />
+      <div className="shrink-0">
+        <img alt="alt" src={urlForImage(image).width(640).height(480).url()} />
       </div>
       <div className="card-body lg:basis-full">
         <h2 className="card-title lg:text-2xl">{title}</h2>

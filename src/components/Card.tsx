@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressBook, faClipboard } from '@fortawesome/free-regular-svg-icons'
+import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 import {
   faBrush,
   faHammer,
@@ -10,6 +9,7 @@ import {
   faTruckPickup,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const iconMap = {
   wrench: faWrench,
@@ -31,7 +31,11 @@ export interface CardProps {
 export default function Card({ title, icon, description }: CardProps) {
   return (
     <div className="flex flex-col px-2 justify-between">
-      {<FontAwesomeIcon icon={iconMap[icon ?? 'wrench']} size="2xl" className="mb-2" />}
+      <FontAwesomeIcon
+        icon={iconMap[icon ?? 'wrench']}
+        size="2xl"
+        className="mb-2"
+      />
       <h3 className="text-xl mb-2">{title}</h3>
       <p>{description}</p>
     </div>

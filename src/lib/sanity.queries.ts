@@ -5,33 +5,14 @@ import { type SanityClient } from 'next-sanity'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 export const landingPage = groq`*[_type == "landingPage"][0]{
-  _id, title, subTitle, images, ctaLabel, ctaLink,
+  _id, title, subTitle, images, ctaLabel, ctaLink,contactPhone,contactEmail,
   highlightedJobs[]->,
   highlightedServices[]->
 }`
 
-export async function getPosts(client: SanityClient): Promise<Post[]> {
-  return await client.fetch(postsQuery)
-}
-
 export async function getFrontPage(client: SanityClient): Promise<LandingPage> {
   return await client.fetch(landingPage)
 }
-
-export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
-
-export async function getPost(
-  client: SanityClient,
-  slug: string,
-): Promise<Post> {
-  return await client.fetch(postBySlugQuery, {
-    slug,
-  })
-}
-
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
 
 export interface LandingPage {
   _type: 'landingPage'
@@ -44,6 +25,8 @@ export interface LandingPage {
   ctaLink?: string
   highlightedJobs: Job[]
   highlightedServices: Service[]
+  contactPhone?: string
+  contactEmail?: string
 }
 
 export interface Post {

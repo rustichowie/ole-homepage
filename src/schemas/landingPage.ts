@@ -3,7 +3,7 @@ import { defineType } from 'sanity'
 export default defineType({
   type: 'document',
   name: 'landingPage',
-
+  title: 'Startsiden',
   fields: [
     {
       type: 'string',
@@ -43,5 +43,15 @@ export default defineType({
       name: 'highlightedServices',
       title: 'Tilgjengelige tjenester',
     },
+    {
+      type: 'string',
+      name: 'contactPhone',
+      title: 'Telefonnummer'
+    },
+    {
+      type: 'string',
+      name: 'contactEmail',
+      title: 'Epost'
+    }
   ],
 })

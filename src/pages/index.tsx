@@ -1,28 +1,23 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope, faHouse, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type {
   GetServerSideProps,
   GetStaticProps,
   InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
-import { Image as SanityImage } from 'sanity'
 
 import Card from '~/components/Card'
-import Container from '~/components/Container'
 import Hero from '~/components/Hero'
 import HighlightedSection from '~/components/HighlightedSection'
-import Welcome from '~/components/Welcome'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
 import { urlForImage } from '~/lib/sanity.image'
-import {
-  getFrontPage,
-  getPosts,
-  LandingPage,
-  type Post,
-  postsQuery,
-} from '~/lib/sanity.queries'
+import { getFrontPage, LandingPage, postsQuery } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 
 export const getServerSideProps: GetServerSideProps<
@@ -55,15 +50,19 @@ export default function IndexPage(
     subTitle,
     ctaLink,
     ctaLabel,
+    contactEmail,
+    contactPhone,
   } = frontPage ?? {}
+
   return (
     <>
+      <Head>
+        <title>Finvåg Service og Vedlikehold</title>
+      </Head>
       <section>
         <div className="navbar bg-base-100">
-          <div className="navbar-start">
-            <a className="pl-2">
-              <Image src="/Logo.png" alt="logo" width="140" height="50" />
-            </a>
+          <div className="navbar-start pl-2">
+            <Image src="/Logo.png" alt="logo" width="140" height="50" />
           </div>
         </div>
       </section>
@@ -71,10 +70,10 @@ export default function IndexPage(
         {images && (
           <Hero
             image={images[0]}
-            link={ctaLink}
-            linkText={ctaLabel}
             subTitle={subTitle}
             title={title}
+            email={contactEmail}
+            phone={contactPhone}
           />
         )}
       </section>
@@ -111,7 +110,7 @@ export default function IndexPage(
                   return (
                     <div
                       key={'highlightedService-' + index}
-                      className="xs:mb-4 lg:mb-8 flex"
+                      className="xs:mb-4 lg:mb-4 flex"
                     >
                       <HighlightedSection
                         color={index % 2 == 0 ? 'primary' : 'secondary'}
@@ -130,11 +129,22 @@ export default function IndexPage(
       <footer className="footer p-10 bg-base-200 text-base-content">
         <aside>
           <Image src="/Logo.png" alt="logo" width="140" height="50" />
-          <h3>
-            tlf: 91794681
-            <br />
-            epost: finvag@hello.no
-          </h3>
+          {contactPhone && (
+            <h3 className="mb-2 flex items-center">
+              <FontAwesomeIcon icon={faPhone as IconProp} className="mr-1" />
+              <a href={`tel:${contactPhone}`} className="underline">
+                {contactPhone}
+              </a>
+            </h3>
+          )}
+          {contactEmail && (
+            <h3 className="flex items-center">
+              <FontAwesomeIcon icon={faEnvelope as IconProp} className="mr-1" />
+              <a href={`mailto:${contactEmail}`} className="underline">
+                {contactEmail}
+              </a>
+            </h3>
+          )}
         </aside>
       </footer>
     </>

@@ -34,6 +34,22 @@ export default defineType({
             title: 'Hus',
             value: 'house',
           },
+          {
+            title: 'Skiftnøkkel',
+            value: 'wrench',
+          },
+          {
+            title: 'Verktøykasse',
+            value: 'toolbox',
+          },
+          {
+            title: 'Pickup',
+            value: 'pickup',
+          },
+          {
+            title: 'Malekost',
+            value: 'brush',
+          }
         ],
       },
     }),
@@ -41,12 +57,6 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const { author } = selection
-      return { ...selection, subtitle: author && `by ${author}` }
-    },
+    }
   },
 })
