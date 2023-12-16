@@ -23,7 +23,7 @@ export default function HighlightedSection({
     <div
       className={`lg:flex card lg:w-full rounded-none ${
         imagePlacement === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'
-      } lg:max-h-[26rem] ${
+      } lg:max-h-[30rem] ${
         color === 'primary' ? 'bg-accent text-neutral-content' : 'bg-base-200'
       } min-h-0`}
     >
