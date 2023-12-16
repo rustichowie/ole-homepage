@@ -6,6 +6,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import useDimensions from 'react-cool-dimensions'
 import { Image as SanityImage } from 'sanity'
+
 import { urlForImage } from '~/lib/sanity.image'
 
 export interface HeroProps {
