@@ -10,7 +10,7 @@ export function revalidateOnPublish(originalPublishAction) {
       onHandle: async () => {
         originalResult.onHandle()
         try {
-          const response = await fetch(`${window.location.hostname}/api/revalidate`, {
+          const response = await fetch(`${window.location.protocol}//${window.location.host}/api/revalidate`, {
             method: 'POST',
             headers: {
               'api-key': secrets.hasOwnProperty('apiKey')
