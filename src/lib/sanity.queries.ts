@@ -5,7 +5,7 @@ import { type SanityClient } from 'next-sanity'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 export const landingPage = groq`*[_type == "landingPage"][0]{
-  _id, title, subTitle, images, ctaLabel, ctaLink,contactPhone,contactEmail,
+  _id, title, subTitle, images, ctaLabel, ctaLink,contactPhone,contactEmail,_updatedAt,_createdAt,
   highlightedJobs[]->,
   highlightedServices[]->
 }`
@@ -17,7 +17,8 @@ export async function getFrontPage(client: SanityClient): Promise<LandingPage> {
 export interface LandingPage {
   _type: 'landingPage'
   _id: string
-  _createtAt: string
+  _createdAt: string
+  _updatedAt: string
   title?: string
   subTitle?: string
   images: Image[]

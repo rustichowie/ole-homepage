@@ -13,6 +13,10 @@ export default function Document() {
           name="google-site-verification"
           content="4kebsVUgR3UFUXa6Jcu-yUblhdo36uBtzUOSrbwBrT0"
         />
+        <meta name="description" content="Fleksible snekkertjenester, bygningsvedlikehold, renovering og mindre bygningsprosjekter."></meta>
+        <meta name="og:description" content="Fleksible snekkertjenester, bygningsvedlikehold, renovering og mindre bygningsprosjekter."></meta>
+        <meta>
+        </meta>
       </Head>
       <body>
         <Main />

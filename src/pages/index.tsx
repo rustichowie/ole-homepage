@@ -1,10 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faHouse, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import type {
-  GetStaticProps,
-  InferGetStaticPropsType,
-} from 'next'
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
