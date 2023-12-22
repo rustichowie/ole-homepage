@@ -13,9 +13,10 @@ import {
   previewSecretId,
   projectId,
 } from '~/lib/sanity.api'
+import { revalidateOnPublish } from '~/lib/sanity.extend'
+import { secretsToolbar } from '~/plugin/secret-toolbar'
 import { schema } from '~/schemas'
 import { productionUrl } from '~/utils/productionUrl'
-
 
 export const myStructure = (S) =>
   S.list()
@@ -24,10 +25,11 @@ export const myStructure = (S) =>
       S.listItem()
         .title('Forside')
         .child(
-          S.document()
-            .schemaType('landingPage')
-            .documentId('landingPage')),
-            ...S.documentTypeListItems().filter(listItem => !['landingPage'].includes(listItem.getId()))
+          S.document().schemaType('landingPage').documentId('landingPage'),
+        ),
+      ...S.documentTypeListItems().filter(
+        (listItem) => !['landingPage'].includes(listItem.getId()),
+      ),
     ])
 
 export default defineConfig({
@@ -44,5 +46,14 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     productionUrl({ previewSecretId, types: ['post'], apiVersion }),
+    secretsToolbar()
   ],
+  document: {
+    actions: (prev) =>
+      prev.map((originalAction) =>
+        originalAction.action === 'publish'
+          ? revalidateOnPublish(originalAction)
+          : originalAction,
+      ),
+  },
 })
