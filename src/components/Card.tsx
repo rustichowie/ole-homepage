@@ -30,7 +30,7 @@ export interface CardProps {
 }
 export default function Card({ title, icon, description }: CardProps) {
   return (
-    <div className="flex flex-col px-2 justify-between">
+    <div className="flex flex-col px-2">
       <FontAwesomeIcon
         icon={iconMap[icon ?? 'wrench']}
         size="2xl"

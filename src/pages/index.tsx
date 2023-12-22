@@ -2,9 +2,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faHouse, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import type {
-  GetServerSideProps,
   GetStaticProps,
-  InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from 'next'
 import Head from 'next/head'
@@ -16,11 +14,10 @@ import Hero from '~/components/Hero'
 import HighlightedSection from '~/components/HighlightedSection'
 import { readToken } from '~/lib/sanity.api'
 import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
 import { getFrontPage, LandingPage, postsQuery } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 
-export const getServerSideProps: GetServerSideProps<
+export const getStaticProps: GetStaticProps<
   SharedPageProps & {
     frontPage: LandingPage
   }
@@ -38,7 +35,7 @@ export const getServerSideProps: GetServerSideProps<
 }
 
 export default function IndexPage(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+  props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
   const [frontPage] = useLiveQuery<LandingPage>(props.frontPage, postsQuery)
 
@@ -48,8 +45,6 @@ export default function IndexPage(
     images,
     title,
     subTitle,
-    ctaLink,
-    ctaLabel,
     contactEmail,
     contactPhone,
   } = frontPage ?? {}

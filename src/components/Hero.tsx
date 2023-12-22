@@ -44,7 +44,7 @@ export default function Hero(props: HeroProps) {
     >
       <div className="hero-overlay bg-opacity-70"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-lg">
+        <div className="max-w-2xl">
           <h1 className="mb-5 text-5xl font-bold uppercase">{props.title}</h1>
 
           <p className="text-lg mb-5">{props.subTitle}</p>

@@ -31,7 +31,7 @@ export default function HighlightedSection({
         <img alt="alt" src={urlForImage(image).width(640).height(480).url()} />
       </div>
       <div className="card-body lg:basis-full">
-        <h2 className="card-title lg:text-2xl">{title}</h2>
+        <h2 className="lg:text-2xl">{title}</h2>
         <p>{description}</p>
       </div>
     </div>
